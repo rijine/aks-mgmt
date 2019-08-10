@@ -1,1 +1,6 @@
 <p>login works!</p>
+<form [formGroup]="loginForm">
+  <input type="text" formControlName="email" name="email" id="email" />
+  <input type="text" formControlName="pwd" name="pwd" id="pwd" />
+  <button type="button" (click)="login()">Login</button>
+</form>

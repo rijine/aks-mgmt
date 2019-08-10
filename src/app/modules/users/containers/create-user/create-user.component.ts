@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UserFormService } from '../../services/user-form.service';
 
 @Component({
   selector: 'app-create-user',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
+  userForm: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private ufs: UserFormService) {
+    this.userForm = this.ufs.getUserForm();
   }
 
+  ngOnInit() {}
 }

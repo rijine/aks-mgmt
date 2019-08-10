@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "dateOfBirth": "21/2/1992",
+      "address": {
+        "street": "Frankfurter Allee",
+        "houseNumber": "3",
+        "city": "Berlin",
+        "postCode": "13123",
+        "country": "Germany"
+      }
+    }
+  ]
+}

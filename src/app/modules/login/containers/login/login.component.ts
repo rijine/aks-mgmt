@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  loginForm: FormGroup;
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+    this.loginForm = this.fb.group({
+      email: [],
+      pwd: []
+    });
   }
 
+  ngOnInit() {}
+
+  public login() {
+    this.auth.login(this.loginForm.value).subscribe(res => {
+      console.log(res);
+    });
+  }
 }
