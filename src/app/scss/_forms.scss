@@ -23,3 +23,14 @@
     justify-content: center;
   }
 }
+
+.form-error {
+  color: red;
+  &:not(:first-of-type) {
+    display: none;
+  }
+}
+
+.form-success {
+  color: green;
+}

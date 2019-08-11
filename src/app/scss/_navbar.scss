@@ -19,6 +19,10 @@
 .navbar-link {
   padding: 0 8px;
   cursor: pointer;
+  & > a {
+    text-decoration: none;
+    color: $primary-color;
+  }
 }
 
 .navbar-link-toggle {

@@ -22,4 +22,8 @@ export class AuthService {
       catchError(() => of(false))
     );
   }
+
+  logout() {
+    this.storage.clearUser();
+  }
 }

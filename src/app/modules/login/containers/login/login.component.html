@@ -2,18 +2,22 @@
   <h2>Login</h2>
   <form [formGroup]="loginForm">
     <div class="form-control">
+      <label>Email</label>
       <input
         class="form-input center"
         type="text"
         formControlName="email"
         name="email"
+        placeholder="Email"
         id="email"
       />
     </div>
     <div class="form-control">
+      <label>Password</label>
       <input
         class="form-input center"
         type="text"
+        placeholder="Password"
         formControlName="pwd"
         name="pwd"
         id="pwd"

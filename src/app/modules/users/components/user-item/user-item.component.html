@@ -1,4 +1,14 @@
-<p>
-  {{ user.id }} {{ user.firstName }} {{ user.lastName }}
-  <button (click)="onSelect(user.id)">View</button>
-</p>
+<div class="card">
+  <div class="card-body">
+    <div class="id-container">{{ user.id }}</div>
+    <div class="name-container">{{ user.firstName }} {{ user.lastName }}</div>
+
+    <div class="action-container">
+      <div class="btn-icon" (click)="onSelect(user.id)">
+        <i class="material-icons">
+          open_in_new
+        </i>
+      </div>
+    </div>
+  </div>
+</div>

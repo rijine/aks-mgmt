@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Injectable()
 export class UserFormService {
@@ -9,35 +9,44 @@ export class UserFormService {
     return this.fb.group({
       firstName: [
         '',
-        [Validators.required, Validators.min(3), Validators.max(20)]
+        [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
       ],
       lastName: [
         '',
-        [Validators.required, Validators.min(3), Validators.max(20)]
+        [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
       ],
       dateOfBirth: ['', [Validators.required]],
       address: this.fb.group({
         street: [
           '',
-          [Validators.required, Validators.min(3), Validators.max(20)]
+          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
         ],
         houseNumber: [
           '',
-          [Validators.required, Validators.min(1), Validators.max(20)]
+          [Validators.required, Validators.minLength(1), Validators.maxLength(20)]
         ],
         city: [
           '',
-          [Validators.required, Validators.min(3), Validators.max(20)]
+          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
         ],
         postCode: [
           '',
-          [Validators.required, Validators.min(1), Validators.max(15)]
+          [Validators.required, Validators.minLength(1), Validators.maxLength(15)]
         ],
         country: [
           '',
-          [Validators.required, Validators.min(3), Validators.max(20)]
+          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
         ]
       })
+    });
+  }
+
+  public markInfoAsDirty(group: FormGroup) {
+    Object.keys(group.controls).forEach(key => {
+      if (group.controls[key].enabled) {
+        group.controls[key].markAsDirty();
+        group.controls[key].markAsTouched();
+      }
     });
   }
 }

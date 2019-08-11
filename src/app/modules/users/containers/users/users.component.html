@@ -1,5 +1,8 @@
-<app-navbar></app-navbar>
-<button class="btn-primary" type="button" (click)="createUser()">
+<app-navbar [menuItems]="menuItems"></app-navbar>
+<h2>Users</h2>
+<!-- <button class="btn-primary" type="button" (click)="createUser()">
   Create User
-</button>
-<app-user-list [users]="users" (selected)="onSelect($event)"></app-user-list>
+</button> -->
+<div class="user-list-container">
+  <app-user-list [users]="users" (selected)="onSelect($event)"></app-user-list>
+</div>

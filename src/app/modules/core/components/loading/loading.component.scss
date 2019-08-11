@@ -1,0 +1,25 @@
+.loading-wrapper {
+  background-color: rgba(255, 255, 255, 0.6);
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 99999;
+  user-select: none;
+}
+
+.loading-icon {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes loading-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
+import { MenuItems } from '../../../shared/constants/nav-items.constants';
 
 @Component({
   selector: 'app-user-details',
@@ -11,6 +12,7 @@ import { User } from '../../models/user';
 })
 export class UserDetailsComponent implements OnInit {
   user: User;
+  menuItems = MenuItems;
   constructor(
     private userSrv: UsersService,
     private router: Router,

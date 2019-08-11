@@ -1,0 +1,14 @@
+@import 'variables';
+
+.card {
+  background-color: $secondary-bg-color;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 2px 10px -3px $primary-shadow-color;
+  text-align: center;
+  &-body {
+    display: flex;
+    justify-content: flex-start;
+  }
+}

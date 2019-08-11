@@ -13,18 +13,15 @@
     </i>
   </div>
   <nav class="navbar-items" [ngClass]="{ 'navbar-show-toggle': showToggle }">
-    <div class="navbar-link">
-      View User
-    </div>
-    <div class="navbar-link">
-      Create Users
+    <div class="navbar-link" *ngFor="let item of menuItems">
+      <a [routerLink]="[item.link]">{{ item.name }}</a>
     </div>
   </nav>
   <nav
     class="navbar-items navbar-items-right"
     [ngClass]="{ 'navbar-show-toggle': showToggle }"
   >
-    <div class="navbar-link">
+    <div class="navbar-link" (click)="logout()">
       Logout
     </div>
   </nav>

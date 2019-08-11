@@ -1,48 +1,172 @@
-<button (click)="goBack()">Back</button>
-<p>create-user works!</p>
+<app-navbar [menuItems]="menuItems"></app-navbar>
+<h2>Create User</h2>
+<app-loading *ngIf="saving"></app-loading>
+<!-- <button (click)="goBack()">Back</button> -->
 <!-- <app-user-form [userForm]="userForm"></app-user-form> -->
-<form [formGroup]="userForm">
-  First Name
-  <input
-    type="text"
-    formControlName="firstName"
-    name="firstName"
-    id="firstName"
-  />
-  Last Name
-  <input type="text" formControlName="lastName" name="lastName" id="lastName" />
-  Date of Birth
-  <input
-    type="text"
-    formControlName="dateOfBirth"
-    name="dateOfBirth"
-    id="dateOfBirth"
-    [matDatepicker]="picker"
-  />
-  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-
-  <ng-container formGroupName="address">
-    Street
-    <input type="text" formControlName="street" name="street" id="street" />
-    House Number
-    <input
-      type="text"
-      formControlName="houseNumber"
-      name="houseNumber"
-      id="houseNumber"
-    />
-    Post Code
-    <input
-      type="text"
-      formControlName="postCode"
-      name="postCode"
-      id="postCode"
-    />
-    City
-    <input type="text" formControlName="city" name="city" id="city" />
-    Country
-    <input type="text" formControlName="country" name="country" id="country" />
-  </ng-container>
-  <button type="button" (click)="onSave()">Save</button>
-</form>
+<div class="container form-box">
+  <form [formGroup]="userForm">
+    <div class="form-control">
+      First Name
+      <input
+        type="text"
+        class="form-input center"
+        formControlName="firstName"
+        name="firstName"
+        id="firstName"
+      />
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('firstName').touched &&
+          userForm.get('firstName').errors?.required
+        "
+        >This field is required</small
+      >
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('firstName').touched &&
+          userForm.get('firstName').errors?.minlength
+        "
+        >Length of First name should be greater than 3</small
+      >
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('firstName').touched &&
+          userForm.get('firstName').errors?.maxlength
+        "
+        >Length of First name should be less than 20</small
+      >
+    </div>
+    <div class="form-control">
+      Last Name
+      <input
+        type="text"
+        class="form-input  center"
+        formControlName="lastName"
+        name="lastName"
+        id="lastName"
+      />
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('lastName').touched &&
+          userForm.get('lastName').errors?.required
+        "
+        >This field is required</small
+      >
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('lastName').touched &&
+          userForm.get('lastName').errors?.minlength
+        "
+        >Length of First name should be greater than 3</small
+      >
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('lastName').touched &&
+          userForm.get('lastName').errors?.maxlength
+        "
+        >Length of Last name should be less than 20</small
+      >
+    </div>
+    <div class="form-control">
+      Date of Birth
+      <div class="datepicker-container">
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="dateOfBirth"
+          name="dateOfBirth"
+          id="dateOfBirth"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <small
+        class="form-error"
+        *ngIf="
+          userForm.get('dateOfBirth').touched &&
+          userForm.get('dateOfBirth').errors?.required
+        "
+        >This field is required</small
+      >
+    </div>
+    <ng-container formGroupName="address">
+      <div class="form-control">
+        Street
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="street"
+          name="street"
+          id="street"
+        />
+        <small
+          class="form-error"
+          *ngIf="
+            userForm.get('address').get('street').touched &&
+            userForm.get('address').get('street').errors?.required
+          "
+          >This field is required</small
+        >
+        <small
+          class="form-error"
+          *ngIf="
+            userForm.get('address').get('street').touched &&
+            userForm.get('address').get('street').errors?.maxlength
+          "
+          >Length of Street should be less than 20</small
+        >
+      </div>
+      <div class="form-control">
+        House Number
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="houseNumber"
+          name="houseNumber"
+          id="houseNumber"
+        />
+      </div>
+      <div class="form-control">
+        Post Code
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="postCode"
+          name="postCode"
+          id="postCode"
+        />
+      </div>
+      <div class="form-control">
+        City
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="city"
+          name="city"
+          id="city"
+        />
+      </div>
+      <div class="form-control">
+        Country
+        <input
+          type="text"
+          class="form-input center"
+          formControlName="country"
+          name="country"
+          id="country"
+        />
+      </div>
+    </ng-container>
+    <div class="form-control center">
+      <button class="btn-primary" type="button" (click)="onSave()">Save</button>
+    </div>
+    <span class="form-success" *ngIf="saved">Saved successfully</span>
+  </form>
+</div>

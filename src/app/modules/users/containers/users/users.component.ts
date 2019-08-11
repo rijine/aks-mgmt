@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
+import { MenuItems } from '../../../shared/constants/nav-items.constants';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,8 @@ import { User } from '../../models/user';
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  menuItems = MenuItems;
+
   constructor(
     private userSrv: UsersService,
     private router: Router,

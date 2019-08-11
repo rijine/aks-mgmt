@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserFormService } from '../../services/user-form.service';
 import { UsersService } from '../../services/users.service';
+import { MenuItems } from '../../../shared/constants/nav-items.constants';
 
 @Component({
   selector: 'app-create-user',
@@ -12,6 +13,9 @@ import { UsersService } from '../../services/users.service';
 })
 export class CreateUserComponent implements OnInit {
   userForm: FormGroup;
+  menuItems = MenuItems;
+  saving = false;
+  saved = false;
 
   constructor(
     private ufs: UserFormService,
@@ -24,13 +28,21 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {}
 
   onSave() {
+    if (!this.userForm.valid) {
+      this.ufs.markInfoAsDirty(this.userForm);
+      return;
+    }
+
+    this.saving = true;
     this.userSrv
       .createUser({
         ...this.userForm.value,
         id: new Date().getTime().toString()
       })
       .subscribe(res => {
-        console.log(res);
+        this.saving = false;
+        this.saved = true;
+        this.userForm.reset();
       });
   }
 
