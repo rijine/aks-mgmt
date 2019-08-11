@@ -1,27 +1,10 @@
-# AksManagement
+# Aks Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
+# Assumptions & Decision Made
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Users list hitting api ( /users ) endpoint ( its json file in assets folder)
+2. Getting user details is from local storage - This api call always fails and handling response in error catching block.
+3. Adding user to from local storage - This api call always fails and handling response in error catching block.
+4. Using Material date picker for selecting date ( in create user page )
+5. For creating user ( url is user/create )
+6. For user details ( after creating ) url is user/id

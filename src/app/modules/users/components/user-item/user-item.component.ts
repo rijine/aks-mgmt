@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 import { User } from '../../models/user';
@@ -15,7 +17,13 @@ import { User } from '../../models/user';
 })
 export class UserItemComponent implements OnInit {
   @Input() user: User;
+  @Output() selected = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}
+
+  onSelect(id: string) {
+    this.selected.emit(id);
+  }
 }

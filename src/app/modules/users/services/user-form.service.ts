@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Injectable()
 export class UserFormService {
@@ -7,15 +7,36 @@ export class UserFormService {
 
   public getUserForm() {
     return this.fb.group({
-      firstName: [],
-      lastName: [],
-      dateOfBirth: [],
+      firstName: [
+        '',
+        [Validators.required, Validators.min(3), Validators.max(20)]
+      ],
+      lastName: [
+        '',
+        [Validators.required, Validators.min(3), Validators.max(20)]
+      ],
+      dateOfBirth: ['', [Validators.required]],
       address: this.fb.group({
-        street: [],
-        houseNumber: [],
-        city: [],
-        postCode: [],
-        country: []
+        street: [
+          '',
+          [Validators.required, Validators.min(3), Validators.max(20)]
+        ],
+        houseNumber: [
+          '',
+          [Validators.required, Validators.min(1), Validators.max(20)]
+        ],
+        city: [
+          '',
+          [Validators.required, Validators.min(3), Validators.max(20)]
+        ],
+        postCode: [
+          '',
+          [Validators.required, Validators.min(1), Validators.max(15)]
+        ],
+        country: [
+          '',
+          [Validators.required, Validators.min(3), Validators.max(20)]
+        ]
       })
     });
   }

@@ -3,23 +3,45 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storage: LocalStorageService) {}
 
   getUsers() {
-    return this.http.get('api/users').pipe(
-      // map((res: any) => res.users),
-      catchError(err => of(err))
-    );
+    const users = this.storage.getUsers();
+    if (users) {
+      return of(users);
+    } else {
+      return this.http.get('assets/data/users.json').pipe(
+        map((res: any) => {
+          this.storage.setAllUsers(res.users);
+          return res.users;
+        }),
+        catchError(err => of(err))
+      );
+    }
   }
 
   getUser(id: string) {
-    return this.http.get('api/users/' + id).pipe(catchError(() => of({})));
+    // This api calls always fails
+    return this.http.get('api/users/' + id).pipe(
+      catchError(() => {
+        const users: User[] = this.storage.getUsers();
+        const user = users.find(usr => usr.id === id);
+        return of(user);
+      })
+    );
   }
 
   createUser(user: User) {
-    return this.http.post('api/users', user).pipe(catchError(err => of(err)));
+    // This api calls always fails
+    return this.http.post('api/users', user).pipe(
+      catchError(err => {
+        this.storage.addUser(user);
+        return of(true);
+      })
+    );
   }
 }

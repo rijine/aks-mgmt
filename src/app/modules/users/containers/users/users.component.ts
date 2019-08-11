@@ -30,4 +30,8 @@ export class UsersComponent implements OnInit {
   createUser() {
     this.router.navigate(['../user/create'], { relativeTo: this.route });
   }
+
+  onSelect(id: string) {
+    this.router.navigate(['../user', id], { relativeTo: this.route });
+  }
 }

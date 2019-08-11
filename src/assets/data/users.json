@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Steve",
       "lastName": "Jobs",
       "dateOfBirth": "21/2/1992",

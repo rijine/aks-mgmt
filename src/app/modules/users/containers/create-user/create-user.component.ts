@@ -27,7 +27,7 @@ export class CreateUserComponent implements OnInit {
     this.userSrv
       .createUser({
         ...this.userForm.value,
-        id: new Date().getTime()
+        id: new Date().getTime().toString()
       })
       .subscribe(res => {
         console.log(res);

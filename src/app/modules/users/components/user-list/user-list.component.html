@@ -1,1 +1,5 @@
-<app-user-item *ngFor="let user of users" [user]="user"></app-user-item>
+<app-user-item
+  *ngFor="let user of users"
+  [user]="user"
+  (selected)="onSelect($event)"
+></app-user-item>
