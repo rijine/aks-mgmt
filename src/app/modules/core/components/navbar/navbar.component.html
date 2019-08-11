@@ -1,0 +1,31 @@
+<div class="navbar">
+  <div class="navbar-link navbar-logo">
+    <i class="material-icons">
+      account_balance
+    </i>
+  </div>
+  <div class="navbar-link navbar-link-toggle" (click)="toggle()">
+    <i class="material-icons" *ngIf="!showToggle">
+      reorder
+    </i>
+    <i class="material-icons" *ngIf="showToggle">
+      clear
+    </i>
+  </div>
+  <nav class="navbar-items" [ngClass]="{ 'navbar-show-toggle': showToggle }">
+    <div class="navbar-link">
+      View User
+    </div>
+    <div class="navbar-link">
+      Create Users
+    </div>
+  </nav>
+  <nav
+    class="navbar-items navbar-items-right"
+    [ngClass]="{ 'navbar-show-toggle': showToggle }"
+  >
+    <div class="navbar-link">
+      Logout
+    </div>
+  </nav>
+</div>

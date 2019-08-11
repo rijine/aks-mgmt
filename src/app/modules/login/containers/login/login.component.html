@@ -1,6 +1,26 @@
-<p>login works!</p>
-<form [formGroup]="loginForm">
-  <input type="text" formControlName="email" name="email" id="email" />
-  <input type="text" formControlName="pwd" name="pwd" id="pwd" />
-  <button type="button" (click)="login()">Login</button>
-</form>
+<div class="form-box">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm">
+    <div class="form-control">
+      <input
+        class="form-input center"
+        type="text"
+        formControlName="email"
+        name="email"
+        id="email"
+      />
+    </div>
+    <div class="form-control">
+      <input
+        class="form-input center"
+        type="text"
+        formControlName="pwd"
+        name="pwd"
+        id="pwd"
+      />
+    </div>
+    <div class="form-control center">
+      <button class="btn-primary" type="button" (click)="login()">Login</button>
+    </div>
+  </form>
+</div>

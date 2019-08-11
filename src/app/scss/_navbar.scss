@@ -1,0 +1,61 @@
+@import 'variables';
+
+.navbar {
+  background-color: $primary-bg-color;
+  display: flex;
+  padding: 16px;
+  font-family: inherit;
+  color: $primary-color;
+}
+
+.navbar-items {
+  display: flex;
+}
+
+.navbar-items-right {
+  margin-left: auto;
+}
+
+.navbar-link {
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.navbar-link-toggle {
+  display: none;
+}
+
+.navbar-logo {
+  padding-right: 4px;
+  min-width: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-items,
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-link {
+    padding: 10px 5px;
+  }
+
+  .navbar-items {
+    display: none;
+  }
+
+  .navbar-items-right {
+    margin-left: 0;
+  }
+
+  .navbar-link-toggle {
+    align-self: flex-end;
+    cursor: pointer;
+    position: absolute;
+    display: initial;
+  }
+
+  .navbar-show-toggle {
+    display: flex;
+  }
+}

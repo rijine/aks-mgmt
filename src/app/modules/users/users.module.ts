@@ -5,6 +5,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 import {
   UsersComponent,
   UserDetailsComponent,
@@ -28,7 +29,8 @@ import { UserFormService, UsersService } from './services';
     FormsModule,
     ReactiveFormsModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [UserFormService, UsersService]
 })

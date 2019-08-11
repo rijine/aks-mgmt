@@ -1,2 +1,5 @@
-<button type="button" (click)="createUser()">Create User</button>
+<app-navbar></app-navbar>
+<button class="btn-primary" type="button" (click)="createUser()">
+  Create User
+</button>
 <app-user-list [users]="users" (selected)="onSelect($event)"></app-user-list>

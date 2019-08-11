@@ -1,0 +1,15 @@
+@import 'variables';
+
+.form-input {
+  border-radius: 100px;
+  font: inherit;
+  padding: 10px 0;
+  width: 100%;
+  border: 1px solid $primary-border-color;
+  outline: none;
+  display: block;
+
+  &.center {
+    text-align: center;
+  }
+}
