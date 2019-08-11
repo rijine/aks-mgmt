@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -10,7 +11,7 @@ import {
   CreateUserComponent
 } from './containers';
 import { UserItemComponent, UserListComponent } from './components';
-import { UserFormService } from './services';
+import { UserFormService, UsersService } from './services';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,13 @@ import { UserFormService } from './services';
   ],
   imports: [
     CommonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     UsersRoutingModule,
     SharedModule
   ],
-  providers: [UserFormService]
+  providers: [UserFormService, UsersService]
 })
 export class UsersModule {}

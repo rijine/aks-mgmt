@@ -1,36 +1,48 @@
+<button (click)="goBack()">Back</button>
 <p>create-user works!</p>
 <!-- <app-user-form [userForm]="userForm"></app-user-form> -->
 <form [formGroup]="userForm">
+  First Name
   <input
     type="text"
     formControlName="firstName"
     name="firstName"
     id="firstName"
   />
+  Last Name
   <input type="text" formControlName="lastName" name="lastName" id="lastName" />
+  Date of Birth
   <input
     type="text"
     formControlName="dateOfBirth"
     name="dateOfBirth"
     id="dateOfBirth"
+    [matDatepicker]="picker"
   />
+  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
 
   <ng-container formGroupName="address">
+    Street
     <input type="text" formControlName="street" name="street" id="street" />
+    House Number
     <input
       type="text"
       formControlName="houseNumber"
       name="houseNumber"
       id="houseNumber"
     />
+    Post Code
     <input
       type="text"
       formControlName="postCode"
       name="postCode"
       id="postCode"
     />
+    City
     <input type="text" formControlName="city" name="city" id="city" />
+    Country
     <input type="text" formControlName="country" name="country" id="country" />
   </ng-container>
-  <button type="button">Save</button>
+  <button type="button" (click)="onSave()">Save</button>
 </form>
