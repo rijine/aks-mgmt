@@ -11,6 +11,21 @@
         placeholder="Email"
         id="email"
       />
+      <small
+        class="form-error"
+        *ngIf="
+          loginForm.get('email').touched &&
+          loginForm.get('email').errors?.required
+        "
+        >This field is required</small
+      >
+      <small
+        class="form-error"
+        *ngIf="
+          loginForm.get('email').touched && loginForm.get('email').errors?.email
+        "
+        >Invalid email</small
+      >
     </div>
     <div class="form-control">
       <label>Password</label>
@@ -22,6 +37,13 @@
         name="pwd"
         id="pwd"
       />
+      <small
+        class="form-error"
+        *ngIf="
+          loginForm.get('pwd').touched && loginForm.get('pwd').errors?.required
+        "
+        >This field is required</small
+      >
     </div>
     <div class="form-control center">
       <button class="btn-primary" type="button" (click)="login()">Login</button>

@@ -1,5 +1,13 @@
 <app-navbar [menuItems]="menuItems"></app-navbar>
 <h2>User Details</h2>
-<div *ngIf="user">
-  {{ user.firstName }}
+<div *ngIf="user" class="container">
+  <div class="card">
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    <hr />
+    <h4>Address</h4>
+    <div>{{ user.address?.street }} {{ user.address?.houseNumber }}</div>
+    <div>{{ user.address?.city }}</div>
+    <div>{{ user.address?.postCode }}</div>
+    <div>{{ user.address?.country }}</div>
+  </div>
 </div>
