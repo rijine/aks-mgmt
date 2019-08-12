@@ -39,7 +39,8 @@ export class UsersService {
     // This api calls always fails
     return this.http.post('api/users', user).pipe(
       catchError(err => {
-        this.storage.addUser(user);
+        const users = this.storage.getUsers();
+        this.storage.addUser({ ...user, id: (users.length + 1).toString() });
         return of(true);
       })
     );

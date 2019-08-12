@@ -37,7 +37,6 @@ export class CreateUserComponent implements OnInit {
     this.userSrv
       .createUser({
         ...this.userForm.value,
-        id: new Date().getTime().toString()
       })
       .subscribe(res => {
         this.saving = false;
