@@ -28,6 +28,6 @@ export class UserListComponent implements OnInit {
   }
   
   getUserCount(): string {
-    this.users.lenght;
+    return this.users.lenght;
   }
 }
