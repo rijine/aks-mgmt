@@ -26,4 +26,8 @@ export class UserListComponent implements OnInit {
   onSelect(id: string) {
     this.selected.emit(id);
   }
+  
+  getUserCount(): string {
+    this.users.lenght;
+  }
 }
