@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
+import { UserItemComponent } from '../user-item/user-item.component';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -8,9 +9,8 @@ describe('UserListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
-    })
-    .compileComponents();
+      declarations: [UserListComponent, UserItemComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

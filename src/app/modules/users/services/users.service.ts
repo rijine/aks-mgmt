@@ -29,7 +29,10 @@ export class UsersService {
     return this.http.get('api/users/' + id).pipe(
       catchError(() => {
         const users: User[] = this.storage.getUsers();
-        const user = users.find(usr => usr.id === id);
+        let user = {};
+        if (users) {
+          user = users.find(usr => usr.id === id);
+        }
         return of(user);
       })
     );
