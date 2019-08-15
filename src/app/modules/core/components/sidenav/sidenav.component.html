@@ -1,0 +1,20 @@
+<div class="sidenav" [ngClass]="{ show: isShow }">
+  <div class="sidebar-close" *ngIf="isShow" (click)="onClose()">
+    <i class="material-icons">
+      close
+    </i>
+  </div>
+  <nav class="navbar-items">
+    <a
+      class="navbar-link"
+      *ngFor="let item of menuItems"
+      [routerLink]="[item.link]"
+      routerLinkActive="active"
+      (click)="onClose()"
+      >{{ item.name }}</a
+    >
+    <div class="navbar-link" (click)="onSignOut()">
+      <a>Logout</a>
+    </div>
+  </nav>
+</div>

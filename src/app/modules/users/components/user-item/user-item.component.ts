@@ -16,7 +16,7 @@ import { User } from '../../models/user';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserItemComponent implements OnInit {
-  @Input() user: User;
+  @Input() user: User = {};
   @Output() selected = new EventEmitter();
 
   constructor() {}

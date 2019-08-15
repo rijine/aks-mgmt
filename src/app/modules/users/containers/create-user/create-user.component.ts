@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserFormService } from '../../services/user-form.service';
 import { UsersService } from '../../services/users.service';
-import { MenuItems } from '../../../shared/constants/nav-items.constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-user',
@@ -13,7 +13,6 @@ import { MenuItems } from '../../../shared/constants/nav-items.constants';
 })
 export class CreateUserComponent implements OnInit {
   userForm: FormGroup;
-  menuItems = MenuItems;
   saving = false;
   saved = false;
 
@@ -34,14 +33,15 @@ export class CreateUserComponent implements OnInit {
     }
 
     this.saving = true;
-    this.userSrv
+    const createUser$: Subscription = this.userSrv
       .createUser({
-        ...this.userForm.value,
+        ...this.userForm.value
       })
       .subscribe(res => {
         this.saving = false;
         this.saved = true;
         this.userForm.reset();
+        createUser$.unsubscribe();
       });
   }
 

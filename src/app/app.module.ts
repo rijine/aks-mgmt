@@ -5,7 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule, UsersModule, SharedModule, CoreModule } from './modules';
+import {
+  LoginModule,
+  UsersModule,
+  HomeModule,
+  SharedModule,
+  CoreModule
+} from './modules';
 import { AuthInterceptor } from './services';
 
 @NgModule({
@@ -18,7 +24,8 @@ import { AuthInterceptor } from './services';
     SharedModule,
     LoginModule,
     UsersModule,
-    CoreModule
+    CoreModule,
+    HomeModule
   ],
   providers: [
     {

@@ -1,0 +1,8 @@
+<app-sidenav [show]="showSideNav" [menuItems]="menuItems" (closed)="navChanged()" (logout)="logout()"></app-sidenav>
+<app-navbar (toggle)="navChanged()"></app-navbar>
+<router-outlet></router-outlet>
+<div
+  class="overlay"
+  [ngClass]="{ show: showSideNav }"
+  (click)="navChanged()"
+></div>

@@ -22,4 +22,11 @@ describe('UserListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('onSelect()', () => {
+    component.selected.subscribe(event => {
+      expect(event).toBe('121');
+    });
+    component.onSelect('121');
+  });
 });

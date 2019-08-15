@@ -4,62 +4,99 @@
   background-color: $primary-bg-color;
   display: flex;
   padding: 16px;
+  z-index: 2;
   font-family: inherit;
   color: $primary-color;
 }
 
 .navbar-items {
   display: flex;
-}
-
-.navbar-items-right {
-  margin-left: auto;
+  flex-direction: column;
 }
 
 .navbar-link {
-  padding: 0 8px;
+  padding: 15px 25px;
   cursor: pointer;
-  & > a {
-    text-decoration: none;
-    color: $primary-color;
-  }
-}
+  text-decoration: none;
+  color: $primary-color;
 
-.navbar-link-toggle {
-  display: none;
+  &.active {
+    background-color: $primary-bg-hover-color;
+  }
 }
 
 .navbar-logo {
-  padding-right: 4px;
+  padding: 2px 4px;
   min-width: 40px;
+  cursor: pointer;
+  user-select: none;
 }
 
-@media only screen and (max-width: 768px) {
-  .navbar-items,
-  .navbar {
-    flex-direction: column;
+// move it its own component
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.4;
+  display: none;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  &.show {
+    display: block;
   }
+}
+// move it its own component
+.sidenav {
+  background-color: $primary-bg-color;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 60px;
+  position: fixed;
+  top: 0;
+  transition: 0.5s;
+  width: 0;
+  z-index: 4;
 
-  .navbar-link {
-    padding: 10px 5px;
+  &.show {
+    width: 400px;
   }
+}
 
+.sidebar-close {
+  display: none;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .sidenav {
+    &.show {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   .navbar-items {
-    display: none;
+    margin: 20px 0px;
+    align-items: center;
   }
 
-  .navbar-items-right {
-    margin-left: 0;
+  .sidenav {
+    padding-top: 0;
+    width: 100vw;
+    height: 0;
+    &.show {
+      height: 60vh;
+      width: 100vw;
+    }
   }
 
-  .navbar-link-toggle {
-    align-self: flex-end;
-    cursor: pointer;
-    position: absolute;
-    display: initial;
-  }
-
-  .navbar-show-toggle {
-    display: flex;
+  .sidebar-close {
+    position: fixed;
+    right: 25px;
+    top: 19px;
+    display: block;
+    color: #fff;
   }
 }

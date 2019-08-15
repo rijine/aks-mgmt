@@ -12,7 +12,25 @@ describe('AuthGuard', () => {
     });
   });
 
-  it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
+  it('should create', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));
+
+  it('should return of user is null', inject(
+    [AuthGuard],
+    (guard: AuthGuard) => {
+      localStorage.setItem('user', null);
+      const result = guard.canActivate(null, null);
+      expect(result).toBe(false);
+    }
+  ));
+
+  it('should redirect if user exists', inject(
+    [AuthGuard],
+    (guard: AuthGuard) => {
+      localStorage.setItem('user', JSON.stringify({ name: 'Something' }));
+      const result = guard.canActivate(null, null);
+      expect(result).toBe(true);
+    }
+  ));
 });

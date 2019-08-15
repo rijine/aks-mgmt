@@ -19,23 +19,43 @@ export class UserFormService {
       address: this.fb.group({
         street: [
           '',
-          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(20)
+          ]
         ],
         houseNumber: [
           '',
-          [Validators.required, Validators.minLength(1), Validators.maxLength(20)]
+          [
+            Validators.required,
+            Validators.minLength(1),
+            Validators.maxLength(20)
+          ]
         ],
         city: [
           '',
-          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(20)
+          ]
         ],
         postCode: [
           '',
-          [Validators.required, Validators.minLength(1), Validators.maxLength(15)]
+          [
+            Validators.required,
+            Validators.minLength(1),
+            Validators.maxLength(15)
+          ]
         ],
         country: [
           '',
-          [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(20)
+          ]
         ]
       })
     });
@@ -43,10 +63,8 @@ export class UserFormService {
 
   public markInfoAsDirty(group: FormGroup) {
     Object.keys(group.controls).forEach(key => {
-      if (group.controls[key].enabled) {
-        group.controls[key].markAsDirty();
-        group.controls[key].markAsTouched();
-      }
+      group.controls[key].markAsDirty();
+      group.controls[key].markAsTouched();
     });
   }
 }

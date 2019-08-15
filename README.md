@@ -8,7 +8,3 @@
 4. Using Material date picker for selecting date ( in create user page )
 5. For creating user ( url is user/create )
 6. For user details ( after creating ) url is user/id
-
-# What not done
-1. Unit tests
-2. No state management used.

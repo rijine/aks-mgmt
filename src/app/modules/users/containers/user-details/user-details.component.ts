@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
-import { MenuItems } from '../../../shared/constants/nav-items.constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent implements OnInit, OnDestroy {
   user: User;
-  menuItems = MenuItems;
+  user$: Subscription;
   constructor(
     private userSrv: UsersService,
     private router: Router,
@@ -25,8 +25,12 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.user$.unsubscribe();
+  }
+
   getUser(id: string) {
-    this.userSrv.getUser(id).subscribe((res: User) => {
+    this.user$ = this.userSrv.getUser(id).subscribe((res: User) => {
       this.user = res;
     });
   }

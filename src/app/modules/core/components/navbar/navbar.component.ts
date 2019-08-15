@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,18 +6,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Input() menuItems = [];
-  showToggle = false;
-  constructor(private auth: AuthService, private router: Router) {}
+  @Output() toggle = new EventEmitter();
+
+  constructor() {}
 
   ngOnInit() {}
 
-  toggle() {
-    this.showToggle = !this.showToggle;
-  }
-
-  logout() {
-    this.auth.logout();
-    this.router.navigate(['/login']);
+  onToggle() {
+    this.toggle.emit();
   }
 }

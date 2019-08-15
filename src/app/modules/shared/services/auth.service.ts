@@ -5,10 +5,15 @@ import { map, catchError } from 'rxjs/operators';
 
 import { LocalStorageService } from './local-storage.service';
 import { UserInfo } from '../models/user-info';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, private storage: LocalStorageService) {}
+  constructor(
+    private http: HttpClient,
+    private storage: LocalStorageService,
+    private router: Router
+  ) {}
 
   login({ email, pwd }: { email: string; pwd: string }) {
     // return this.http.post('/assets/data/auth.json', { email, pwd });
@@ -25,5 +30,6 @@ export class AuthService {
 
   logout() {
     this.storage.clearUser();
+    this.router.navigate(['/login']);
   }
 }

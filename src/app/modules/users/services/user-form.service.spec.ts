@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserFormService } from './user-form.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { UsersModule } from '../users.module';
 
 describe('UserFormService', () => {

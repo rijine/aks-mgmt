@@ -27,4 +27,11 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('onToggle()', () => {
+    component.toggle.subscribe(event => {
+      expect(event).toBe(undefined);
+    });
+    component.onToggle();
+  });
 });
